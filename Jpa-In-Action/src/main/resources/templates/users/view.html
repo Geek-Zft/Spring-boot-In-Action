@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf-In-Action</title>
+</head>
+<body>
+    <h3 th:text="${title}"></h3>
+    <hr />
+    <div>
+        <p><strong>ID:</strong><span th:text="${user.id}"></span></p>
+        <p><strong>Name:</strong><span th:text="${user.name}"></span></p>
+        <p><strong>Email:</strong><span th:text="${user.email}"></span></p>
+    </div>
+    <div>
+        <a href="" th:href="@{ '/users/modify/' + ${user.id} }" th:text="'modify'"></a>
+    </div>
+</body>
+</html>

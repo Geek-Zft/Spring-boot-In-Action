@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf-In-Action</title>
+</head>
+<body>
+    <div th:replace="~{fragments/header :: header}"></div>
+    <h3 th:text="title">This is a form</h3>
+
+    <!--将user对象跟form绑定  ${user}-->
+    <form action="/users" th:action="@{/users}" method="post" th:object="${user}">
+        <!-- *{id} 取当前对象的id属性-->
+        <input type="hidden" name="id" th:value="*{id}"/>
+        Name: <br/>
+        <input type="text" name="name" th:value="*{name}"/>
+        <br/>
+        Email: <br/>
+        <input type="text" name="email" th:value="*{email}"/>
+        <br/>
+        <input type="submit" value="Submit">
+    </form>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>
