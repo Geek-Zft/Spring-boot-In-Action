@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf-In-Action</title>
+
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<h3 th:text="title">This is a form</h3>
+
+<div id="container">
+    <!--将user对象跟form绑定  ${user}-->
+    <form action="/users" th:action="@{/users}" method="post" th:object="${user}" class="form-horizontal">
+        <!-- *{id} 取当前对象的id属性-->
+        <input type="hidden" name="id" th:value="*{id}" class="form-control"/>
+        Name: <br/>
+        <input type="text" name="name" th:value="*{name}" class="form-control"/>
+        <br/>
+        Email: <br/>
+        <input type="text" name="email" th:value="*{email}" class="form-control"/>
+        <br/>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">submit</button>
+        </div>
+    </form>
+
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+<script src="../../static/js/jquery-3.1.1.min.js" ></script>
+<script src="../../static/js/bootstrap.min.js" ></script>
+</html>

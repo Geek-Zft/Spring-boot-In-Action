@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf-In-Action</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!--引进header-->
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <div id="container">
+        <div sec:authorize="isAuthenticated()">
+            <p>登录用户： <span sec:authentication="name"></span></p>
+            <p>用户角色： <span sec:authentication="principal.authorities"></span></p>
+        </div>
+    </div>
+
+    <div sec:authorize="isAnonymous()" style="padding-top: 50px">
+        <p style="color: red">未有用户登录</p>
+    </div>
+
+    <!--引进footer-->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script src="../../static/js/jquery-3.1.1.min.js" ></script>
+    <script src="../../static/js/bootstrap.min.js" ></script>
+</body>
+</html>
